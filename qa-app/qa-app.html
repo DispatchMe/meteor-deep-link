@@ -1,0 +1,49 @@
+<head>
+  <title>qa-app</title>
+
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+</head>
+
+<body>
+  <h1>Welcome to Meteor!</h1>
+
+  {{> hello}}
+</body>
+
+<template name="hello">
+  {{#if isCordova}}
+    <button class="btnBrowser">Test from browser</button><br>
+    <br>
+    <button class="btnCompose">Test from email</button><br>
+    <br>
+    <h3>Data:</h3>
+    {{#each query}}
+      {{key}}={{val}}<br>
+    {{else}}
+      No query
+    {{/each}}
+
+  {{else}}
+    <h3>Click on the link to open the app</h3>
+    <a href="{{customLink}}">Open the app via link:</a><br>
+    {{customLink}}
+    <br>
+    <br>
+    <a href="{{base64Link}}">Open the app via base64 link:</a><br>
+    {{base64Link}}<br>
+    <i>(sending nested data, a Date object)</i>
+    <br>
+    <br>
+    {{#if isAndroid}}
+      <a href="intent://scan/#Intent;scheme=notfound;package=me.dispatch.qa.test.deep.link;S.browser_fallback_url=http%3A%2F%2Fgoogle.com;end"> Android false app</a>
+      <i>(fallback url is google.com)</i>
+      <br>
+      <br>
+    {{/if}}
+    <button class="btnOpenApp">Open the app</button>
+    <br>
+    <br>
+    <button class="btnOpenFalseApp">Open false app</button>
+  {{/if}}
+</template>
