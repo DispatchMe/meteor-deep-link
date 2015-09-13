@@ -19,7 +19,7 @@ App.configurePlugin('cordova-plugin-customurlscheme', {
 ```
 
 #### Usage
-Create an `iosBanner` or have a `link` for the user to click on - when the app recieves the link catch it like:
+Create an `iosBanner` or have a `link` for the user to click on - when the app recieves the link you can catch it like:
 ```js
 
   DeepLink.once('mycoolapp', function(data, url, scheme, path, querystring){
@@ -27,7 +27,7 @@ Create an `iosBanner` or have a `link` for the user to click on - when the app r
   });
 
 ```
-* [QA/Demo app](qa-app)*
+*Have a look at the [QA/Demo app](qa-app)*
 
 ### Additional api / helpers
 Thers added an extra api of helpers making it easy to send data to the app:
