@@ -1,6 +1,6 @@
 Package.describe({
   name: 'dispatch:deep-link',
-  version: '4.0.1-rc.1',
+  version: '4.0.1',
   summary: 'Handle deep linked data'
 });
 
@@ -12,7 +12,7 @@ Cordova.depends({
 });
 
 Package.onUse(function(api) {
-  api.versionsFrom('METEOR@1.2-rc.14');
+  api.versionsFrom('METEOR@1.2');
   api.use(['ecmascript', 'underscore'], 'web');
 
   api.use([

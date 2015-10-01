@@ -48,6 +48,11 @@ if (Meteor.isClient) {
       window.location = encodeURI('mailto:foo@bar.com?subject=Custom URL scheme demo&body=' +
             '<a href="dispatchdeeplinktest://?foo=bar">Link to app</a>');
     },
+    'click .btnComposeSMS': function() {
+      var phoneNumber = $('.inputNumber').val();
+      window.location = encodeURI('sms:' + phoneNumber + '?subject=Custom URL scheme demo&body=' +
+            '<a href="dispatchdeeplinktest://?foo=bar">Link to app</a>');
+    },
     'click .btnBrowser': function() {
       cordova.InAppBrowser.open(__meteor_runtime_config__.ROOT_URL, '_system');
     }

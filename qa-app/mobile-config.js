@@ -14,6 +14,7 @@ App.setPreference('HideKeyboardFormAccessoryBar', true);
 App.accessRule('http://*');
 App.accessRule('https://*');
 App.accessRule('mailto:*', { launchExternal: true });
+App.accessRule('sms:*', { launchExternal: true });
 
 // Setup deeplink
 App.configurePlugin('cordova-plugin-customurlscheme', {
