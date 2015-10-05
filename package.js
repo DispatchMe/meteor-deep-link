@@ -13,18 +13,23 @@ Cordova.depends({
 
 Package.onUse(function(api) {
   api.versionsFrom('METEOR@1.2');
-  api.use(['ecmascript', 'underscore'], 'web');
 
   api.use([
+    'ecmascript',
+    'underscore',
     'ejson',
     'raix:eventstate@0.0.4'
-  ], 'web');
+  ]);
 
   api.addFiles([
     'lib/common.js'
-  ], 'web');
+  ]);
 
-  api.export('DeepLink', 'web');
+  api.addFiles([
+    'lib/client.js'
+  ], 'client');
+
+  api.export('DeepLink');
 
   // Adds a global "handleOpenURL" on cordova
   api.export('handleOpenURL', 'web.cordova');
