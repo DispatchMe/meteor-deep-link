@@ -1,6 +1,6 @@
 Package.describe({
   name: 'dispatch:deep-link',
-  version: '4.0.1',
+  version: '4.0.3',
   summary: 'Handle deep linked data'
 });
 
