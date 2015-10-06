@@ -100,6 +100,8 @@ Tinytest.add('dispatch:deep-link - parseQueryString', function(test) {
   parseQueryStringTest('foo=', { foo: '' });
 
   parseQueryStringTest('foo=&bar=foo', { foo: '', bar: 'foo' });
+
+  parseQueryStringTest('text=foo%3Dbar%26bar%3Dfoo', { text: 'foo=bar&bar=foo' });
 });
 
 Tinytest.add('dispatch:deep-link - objectToQueryString', function(test) {
@@ -156,6 +158,23 @@ Tinytest.add('dispatch:deep-link - createQueryString', function(test) {
 Tinytest.add('dispatch:deep-link - isNested', function(test) {
   test.isFalse(isNested({ foo: 'bar' }));
   test.isTrue(isNested({ foo: { bar: 'isNested' } }));
+});
+
+Tinytest.add('dispatch:deep-link - basic test', function(test) {
+  var myCoolApp = new DeepLink('mycoolapp', {
+    // Optional
+    appId: 'me.dispatch.qa.test.deep.link',
+    url: 'http://foo.com', // Homepage with intent support
+    fallbackUrl: 'http://meteor.com' // Only android
+  });
+
+  test.equal(myCoolApp.createLink('path',  { foo: 'bar' }), 'path?foo=bar');
+  test.equal(myCoolApp.intentLink('path',  { foo: 'bar' }), 'mycoolapp://path?foo=bar');
+  test.equal(myCoolApp.iosLink('path',  { foo: 'bar' }), 'mycoolapp://path?foo=bar');
+  test.equal(myCoolApp.browserLink('path',  { foo: 'bar' }), 'http://foo.com/mycoolapp://path?foo=bar');
+  test.equal(myCoolApp.androidLink('path',  { foo: 'bar' }), 'intent://path?foo=bar#Intent;scheme=mycoolapp;package=' +
+          'me.dispatch.qa.test.deep.link;S.browser_fallback_url=http://meteor.com;end');
+
 });
 
 //Test API:

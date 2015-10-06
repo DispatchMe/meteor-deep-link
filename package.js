@@ -22,6 +22,10 @@ Package.onUse(function(api) {
   ]);
 
   api.addFiles([
+    'lib/server.js'
+  ], 'server');
+
+  api.addFiles([
     'lib/common.js'
   ]);
 
@@ -35,23 +39,24 @@ Package.onUse(function(api) {
   api.export('handleOpenURL', 'web.cordova');
 
   // Test exports
-  api.export('intentPattern', 'client', { testOnly: true });
-  api.export('browserIntentPattern', 'client', { testOnly: true });
+  api.export('intentPattern', { testOnly: true });
+  api.export('browserIntentPattern', { testOnly: true });
 
-  api.export('parseQueryString', 'client', { testOnly: true });
-  api.export('objectToQueryString', 'client', { testOnly: true });
-  api.export('objectToBase64', 'client', { testOnly: true });
-  api.export('objectFromBase64', 'client', { testOnly: true });
-  api.export('isNested', 'client', { testOnly: true });
-  api.export('createQueryString', 'client', { testOnly: true });
+  api.export('parseQueryString', { testOnly: true });
+  api.export('objectToQueryString', { testOnly: true });
+  api.export('objectToBase64', { testOnly: true });
+  api.export('objectFromBase64', { testOnly: true });
+  api.export('isNested', { testOnly: true });
+  api.export('createQueryString', { testOnly: true });
 });
 
 Package.onTest(function(api) {
-  api.use(['ecmascript'], 'web');
+  api.use([
+    'ecmascript',
+    'dispatch:deep-link',
+    'test-helpers',
+    'tinytest'
+  ]);
 
-  api.use(['dispatch:deep-link']);
-  api.use('test-helpers', 'client');
-  api.use('tinytest', 'client');
-
-  api.addFiles('tests/utils.js', 'client');
+  api.addFiles('tests/utils.js');
 });
