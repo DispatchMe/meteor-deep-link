@@ -5,7 +5,7 @@ This package enables deep linking to cordova or browser app.
 
 ### Install
 ```
-$ meteor install dispatch:deep-link
+$ meteor add dispatch:deep-link
 ```
 
 ### Basic usage
