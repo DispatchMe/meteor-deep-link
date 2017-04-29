@@ -130,7 +130,7 @@ Tinytest.add('dispatch:deep-link - EJSON Base64', function(test) {
   var str = objectToBase64(testObject);
   var newObject = objectFromBase64(str);
 
-  test.equal(str, 'data:ejson;base64,eyJmb28iOiJiYXIiLCJiYXIiOiJmb28iLCJkYXRlIjp7IiRkYXRlIjoxNDIyNzQ4ODYwMDAwfX0=');
+  test.equal(str, 'data:ejson;base64,eyJmb28iOiJiYXIiLCJiYXIiOiJmb28iLCJkYXRlIjp7IiRkYXRlIjoxNDIyNzc0MDYwMDAwfX0=');
   test.equal(testObject.foo, newObject.foo);
   test.equal(testObject.bar, newObject.bar);
   test.equal(+testObject.date, +newObject.date);
@@ -151,7 +151,7 @@ Tinytest.add('dispatch:deep-link - createQueryString', function(test) {
   test.equal(createQueryString('plaintext'), 'plaintext');
   test.equal(createQueryString({ foo: 'bar', bar: 'foo'}), 'foo=bar&bar=foo');
   test.equal(createQueryString({ date: new Date(2015, 1, 1, 0, 0, 0, 0) }),
-          'data:ejson;base64,eyJkYXRlIjp7IiRkYXRlIjoxNDIyNzQ1MjAwMDAwfX0=');
+          'data:ejson;base64,eyJkYXRlIjp7IiRkYXRlIjoxNDIyNzcwNDAwMDAwfX0=');
 
 });
 
